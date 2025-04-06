@@ -65,8 +65,8 @@ else
 RUSTSBI = ./bootloader/SBI/sbi-qemu
 endif
 
-TOOLPREFIX	:= riscv64-unknown-elf-
-#TOOLPREFIX	:= riscv64-linux-gnu-
+# TOOLPREFIX	:= riscv64-unknown-elf-
+TOOLPREFIX	:= riscv64-linux-gnu-
 CC = $(TOOLPREFIX)gcc
 AS = $(TOOLPREFIX)gas
 LD = $(TOOLPREFIX)ld
@@ -135,6 +135,7 @@ QEMUOPTS = -machine virt -kernel $T/kernel -m 8M -nographic
 QEMUOPTS += -smp $(CPUS)
 
 QEMUOPTS += -bios $(RUSTSBI)
+#QEMUOPTS += -bios default
 
 # import virtual disk image
 QEMUOPTS += -drive file=fs.img,if=none,format=raw,id=x0 
